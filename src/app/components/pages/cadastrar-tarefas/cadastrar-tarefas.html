@@ -1,0 +1,48 @@
+<h4>Formulário de cadastro de tarefas</h4>
+<p>Preencha os campos para incluir uma tarefa em sua agenda.</p>
+<hr />
+
+<div *ngIf="mensagem()" class="alert alert-success">
+    <strong>{{ mensagem() }}</strong>
+</div>
+
+<form [formGroup]="formulario" (ngSubmit)="cadastrarTarefa()">
+
+    <div class="mb-3">
+        <label>Nome da tarefa:</label>
+        <input type="text" class="form-control" formControlName="nomeTarefa" />
+    </div>
+
+    <div class="mb-3">
+        <label>Data da tarefa:</label>
+        <input type="date" class="form-control" formControlName="dataTarefa" />
+    </div>
+
+    <div class="mb-3">
+        <label>Prioridade da tarefa:</label>
+        <select class="form-select" formControlName="prioridadeTarefa">
+            <option value="">Escolha uma opção</option>
+            <option value="Baixa">Prioridade Baixa</option>
+            <option value="Media">Prioridade Média</option>
+            <option value="Alta">Prioridade Alta</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Categoria da tarefa:</label>
+        <select class="form-select" formControlName="idCategoria">
+            <option value="">Escolha uma opção</option>
+            <!-- Imprimindo cada categoria obtida da API -->
+            <option *ngFor="let c of categorias()" value="{{ c.id }}">
+                {{ c.nome | uppercase }}
+            </option> 
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <input type="submit" class="btn btn-success" value="Realizar Cadastro" 
+            [disabled]="formulario.invalid"
+        />
+    </div>
+
+</form>

@@ -1,0 +1,42 @@
+<h4>Formulário de edição de tarefas</h4>
+<p>Modifique os campos para atualizar uma tarefa em sua agenda.</p>
+<hr />
+
+<form>
+
+    <div class="mb-3">
+        <label>Nome da tarefa:</label>
+        <input type="text" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Data da tarefa:</label>
+        <input type="date" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Prioridade da tarefa:</label>
+        <select class="form-select">
+            <option value="">Escolha uma opção</option>
+            <option value="Baixa">Prioridade Baixa</option>
+            <option value="Media">Prioridade Média</option>
+            <option value="Alta">Prioridade Alta</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Categoria da tarefa:</label>
+        <select class="form-select">
+            <option value="">Escolha uma opção</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <input type="checkbox" class="ms-1 me-2" /> <label>Finalizado?</label>
+    </div>
+
+    <div class="mb-3">
+        <input type="submit" class="btn btn-primary" value="Salvar Alterações" />
+    </div>
+
+</form>

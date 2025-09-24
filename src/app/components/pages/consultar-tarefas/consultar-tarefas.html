@@ -1,0 +1,57 @@
+<h4>Consulta de tarefas</h4>
+<p>Listagem das tarefas da agenda</p>
+<hr/>
+
+<table class = "table table-sm table-hover table-striped mt-2"> 
+    <thead>
+        <tr>
+            <th>Nome da tarefa</th>
+            <th>Data</th>
+            <th>Prioridade</th>
+            <th>Finalizado</th>
+            <th>Categoria</th>
+            <th>Ações</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let t of tarefas()">
+            <td>{{ t.nome | uppercase }}</td>
+            <td>{{t.data | date : 'dd/MM/yyyy'}}</td>
+            <td>{{t.prioridade}}</td>
+            <td>
+                 <span *ngIf="t.finalizado == true" class="badge bg-success">SIM</span>
+                <span *ngIf="t.finalizado == false" class="badge bg-warning">NÃO</span>
+            </td>
+            <td>{{t.categoria.nome}}</td>
+            <td>
+                <button [routerLink]="['/editar-tarefas', t.id]" 
+                    class="btn btn-sm btn-primary me-1">
+                    Editar
+                </button>
+
+                <button (click)="excluirTarefa(t.id)" c="btn btn-sm btn-danger">Excluir</button>
+            </td>
+        </tr>
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="6">
+                Quantidade de tarefas: {{ tarefas().length }}
+
+            </td>
+
+
+        </tr>
+
+
+
+
+    </tfoot>
+
+
+
+
+
+</table>
